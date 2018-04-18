@@ -159,9 +159,6 @@ function dayCalc(date) {
 	}
 
 	arrayDate.reverse() // перевернем массив
-console.log(getMonthYear.getMonth())
-console.log(copyMonthYear.getMonth())
-console.log(month)
 
 	while (getMonthYear.getMonth() == month) { //пока расчетный месяц равен полученному
 		arrayDate.push(getMonthYear.getDate()); //в массив добавляем дни месяца
