@@ -62,7 +62,7 @@ function createCalerdar(date) {
 			if (item > 1 && 7 < item ) { config = 'ui-datepicker-other-month'; } //в первой неделе попадают числа с предыдущего месяца. 
 			if (item <= 7 && item == date.getDate()) {	config = 'ui-datepicker-today'; } // сегоднящнее число и оно <7, чтобы не попадали дни предыдущего месяца
 
-			return (<td className={config}key={index}>{item}</td>	)
+			return (<td className={config} key={index}>{item}</td>	)
 		}
 	});
 
@@ -71,9 +71,9 @@ function createCalerdar(date) {
 	
 		if (index >= 7 && index < 14) {
 			let config;
-			if (item == date.getDate()) {	config = 'ui-datepicker-today'; }
+			if (item == date.getDate()) { config = 'ui-datepicker-today'; }
 
-			return (<td className={config}key={index}>{item}</td>	);
+			return (<td className={config} key={index}>{item}</td>	);
 		}
 	});
 
@@ -82,9 +82,9 @@ function createCalerdar(date) {
 	
 		if (index >= 14 && index < 21) {
 			let config;
-			if (item == date.getDate()) {	config = 'ui-datepicker-today'; }
+			if (item == date.getDate()) { config = 'ui-datepicker-today'; }
 
-			return (<td className={config}key={index}>{item}</td>	);
+			return (<td className={config} key={index}>{item}</td>	);
 		}
 	});
 
@@ -93,9 +93,9 @@ function createCalerdar(date) {
 	
 		if (index >= 21 && index < 28) {
 			let config;
-			if (item == date.getDate()) {	config = 'ui-datepicker-today'; }
+			if (item == date.getDate()) { config = 'ui-datepicker-today'; }
 
-			return (<td className={config}key={index}>{item}</td>	);
+			return (<td className={config} key={index}>{item}</td>	);
 		}
 	});
 
@@ -105,9 +105,9 @@ function createCalerdar(date) {
 		if (index >= 28 && index < 35) {
 			let config;
 			if (item < 7) { config = 'ui-datepicker-other-month'; }
-			if (item > 7 && item == date.getDate()) {	config = 'ui-datepicker-today'; }
+			if (item > 7 && item == date.getDate()) { config = 'ui-datepicker-today'; }
 
-			return (<td className={config}key={index}>{item}</td>	);
+			return (<td className={config} key={index}>{item}</td>	);
 		}
 	});
 
@@ -117,9 +117,9 @@ function createCalerdar(date) {
 		if (index >= 35 && index < 42) {
 			let config ='';
 			if (item < 7) { config = 'ui-datepicker-other-month'; }
-			if (item > 7 && item == date.getDate()) {	config = 'ui-datepicker-today'; }
+			if (item > 7 && item == date.getDate()) { config = 'ui-datepicker-today'; }
 
-			return (<td className={config}key={index}>{item}</td>	);
+			return (<td className={config} key={index}>{item}</td>	);
 		}
 	});
 
