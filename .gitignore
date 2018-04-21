@@ -2,3 +2,5 @@ node_modules
 .idea
 solution
 /state/dropdown/solution
+yarn-error.log
+yarn.lock
