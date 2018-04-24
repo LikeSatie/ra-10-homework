@@ -9,3 +9,5 @@ function MessageHistory({list}) {
 	});
 	return (<ul> {messageList} </ul>);
 }
+
+MessageHistory.defaultProps = { list: [] }; //значение по умолчанию
