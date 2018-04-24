@@ -2,9 +2,7 @@
 
 fetch('https://neto-api.herokuapp.com/etsy')
 	.then(res => {
-		if (200 <= res.status && res.status < 300) {
-			return res;
-		}
+		if (200 <= res.status && res.status < 300) { return res; }
 		throw new Error(res.statusText);
 	})
 	.then(res => res.json())
@@ -59,5 +57,5 @@ function Listing({ items }) {
 		);
 	});
 
-	return <div className="item-list">{itemList}</div>;
+	return (<div className="item-list">{itemList}</div>);
 }
