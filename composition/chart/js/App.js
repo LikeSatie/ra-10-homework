@@ -39,9 +39,9 @@ class App extends React.Component {
 
 		return (
 			<section>
-				<div className="Charts">
+				<Charts>
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
+						let sortedSerie = serie.slice(0),
 							sum;
 
 						sum = serie.reduce((carry, current) => carry + current, 0);
@@ -54,7 +54,7 @@ class App extends React.Component {
 							>
 							<label>{ labels[serieIndex] }</label>
 							{ serie.map((item, itemIndex) => {
-								var color = colors[itemIndex], style,
+								let color = colors[itemIndex], style,
 									size = item / (max) * 100;
 
 								style = {
@@ -77,11 +77,10 @@ class App extends React.Component {
 							</div>
 						);
 					}) }
-				</div>
-
-				<div className="Charts">
+				</Charts>
+				<Charts>
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
+						let sortedSerie = serie.slice(0),
 							sum;
 
 						sum = serie.reduce((carry, current) => carry + current, 0);
@@ -94,7 +93,7 @@ class App extends React.Component {
 							>
 							<label>{ labels[serieIndex] }</label>
 							{ serie.map((item, itemIndex) => {
-								var color = colors[itemIndex], style,
+								let color = colors[itemIndex], style,
 									size = item / sum * 100;
 
 								style = {
@@ -117,11 +116,10 @@ class App extends React.Component {
 							</div>
 						);
 					}) }
-				</div>
-
-				<div className="Charts">
+				</Charts>
+				<Charts>
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
+						let sortedSerie = serie.slice(0),
 							sum;
 
 						sum = serie.reduce((carry, current) => carry + current, 0);
@@ -134,7 +132,7 @@ class App extends React.Component {
 							>
 							<label>{ labels[serieIndex] }</label>
 							{ serie.map((item, itemIndex) => {
-								var color = colors[itemIndex], style,
+								let color = colors[itemIndex], style,
 									size = item / (max) * 100;
 
 								style = {
@@ -158,12 +156,11 @@ class App extends React.Component {
 							</div>
 						);
 					}) }
-				</div>
-
+				</Charts>
 				<Charts horizontal>
 				
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
+						let sortedSerie = serie.slice(0),
 							sum;
 
 						sum = serie.reduce((carry, current) => carry + current, 0);
@@ -176,7 +173,7 @@ class App extends React.Component {
 							>
 							<label>{ series[serieIndex] }</label>
 							{ serie.map((item, itemIndex) => {
-								var color = colors[itemIndex], style,
+								let color = colors[itemIndex], style,
 									size = item / (max) * 100;
 
 								style = {
@@ -200,9 +197,6 @@ class App extends React.Component {
 						);
 					}) }
 				</Charts>
-
-
-
 				<Legend>
 					{ labels.map((label, labelIndex) => {
 						return(
@@ -210,20 +204,17 @@ class App extends React.Component {
 						)
 					})}
 				</Legend>
-
 			</section>
 		);
 	}
 }
 
 const Charts = (props) => {
-	console.log(props);
 	return (
-		<div className="Charts horizontal">
+	<div className={props.horizontal ? "Charts horizontal" : "Charts"}>
 			{props.children}
 		</div>
 	)
-
 }
 
 const Legend = (props) => {
