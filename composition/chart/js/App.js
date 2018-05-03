@@ -36,7 +36,6 @@ class App extends React.Component {
 		const max = data.reduce((max, serie) => Math.max(max, serie.reduce((serieMax, item) => Math.max(serieMax, item), 0)), 0);
 
 		const newProps = Object.assign({}, this.state);
-		console.log(newProps)
 
 		return (
 			<section>
