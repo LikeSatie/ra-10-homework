@@ -13,23 +13,39 @@ const content = [
 		title: 'Использование JSX',
 		article: 'JSX является языком, расширяющим синтаксис стандартного Javascript. По факту он позволяет писать HTML-код в JS-скриптах. Такой подход упрощает разработку компонентов и повышает читаемость кода.'
 	}
-]
 
+];
 
 class App extends React.Component {
+	componentWillMount() {
+		this.setState({
+			data: []
+		});
+	}
+
+	componentDidMount() {
+		const contentLength = 6; //кол-во блоков
+
+		let data = new Array(contentLength).fill(0);
+		data = data.map((item, itemIndex) => content[itemIndex]);
+
+		this.setState({data});
+	}
 
 	render () {
+		const {data} = this.state;
 		return (
-		<main className="main">
-			<h2 className="title">React</h2>
-
-			{ content.map((item, itemIndex) => {
-        return (
-       		<Section title={item.title} article={item.article} /> 
-        )
-   		}) }
-		</main>
-		)
+			<main className="main">
+				<Title> React </Title>
+	
+				{ data.map((item, itemIndex) => {
+					if (!item) return; // не выводим пустые блоки 
+    	    return (
+      	 		<Section key={itemIndex}>{item}</Section>
+        	);
+   			}) }
+			</main>
+		);
 	}
 }
 
@@ -42,23 +58,41 @@ class Section extends React.Component {
 	}
 
 	render() {
-
 		const toggleOpen = () => {
 			this.setState({
 				open: !this.state.open
 			});
-		};
+		}
 
-		return (
-			<section className={` section ${this.state.open ? "open" : ""}`}>
-				<button  onClick={() => toggleOpen()}>toggle</button>
-				<h3 className="sectionhead"  onClick={() => toggleOpen()}>{this.props.title}</h3>
+		const SectionHead = (props) => {
+			return (
+				<h3 className="sectionhead" onClick={() => toggleOpen()}>{props.children}</h3>
+			);
+		}
+
+		const ArticleWrap = (props) => {
+			return (
 				<div className="articlewrap">
-					<div className="article">{this.props.article}
+					<div className="article">
+						{props.children}
 					</div>
 				</div>
+			);
+		}
+
+		return (
+			<section className={`section ${this.state.open ? "open" : ""}`}>
+				<button  onClick={() => toggleOpen()}>toggle</button>
+				<SectionHead>{this.props.children.title}</SectionHead>
+				<ArticleWrap>{this.props.children.article}</ArticleWrap>
 			</section>	
-		)
+		);
 	}
 }
 
+
+const Title = (props) => {
+	return (
+		<h2 className="title">{props.children}</h2>
+	);
+}
