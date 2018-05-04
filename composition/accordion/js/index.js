@@ -18,7 +18,7 @@ const content = [
 
 class App extends React.Component {
 
-	render (){
+	render () {
 		return (
 		<main className="main">
 			<h2 className="title">React</h2>
@@ -30,20 +30,29 @@ class App extends React.Component {
    		}) }
 		</main>
 		)
-
 	}
 }
 
 class Section extends React.Component {
 	constructor (props) {
-		super(props)
+		super(props);
+		this.state = {
+			open: false
+		}
 	}
 
 	render() {
+
+		const toggleOpen = () => {
+			this.setState({
+				open: !this.state.open
+			});
+		};
+
 		return (
-			<section className="section open">
-				<button>toggle</button>
-				<h3 className="sectionhead">{this.props.title}</h3>
+			<section className={` section ${this.state.open ? "open" : ""}`}>
+				<button  onClick={() => toggleOpen()}>toggle</button>
+				<h3 className="sectionhead"  onClick={() => toggleOpen()}>{this.props.title}</h3>
 				<div className="articlewrap">
 					<div className="article">{this.props.article}
 					</div>
