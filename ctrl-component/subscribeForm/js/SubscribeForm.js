@@ -6,15 +6,17 @@ class SubscribeForm extends React.Component {
 			email: '',
 			checkEmailValid: ' '
 		};
+		this.submit = this.submit.bind(this);
+		this.checkEmail = this.checkEmail.bind(this);
 	}
 
 	checkEmail(event) {
+		const isValidEmail = event.currentTarget.validity.valid ? 'is-valid' : 'is-error';
+		const checkLengthAndValidEmail =	!event.currentTarget.value.length ? ' ' : isValidEmail;
 		this.setState({
-			email: event.currentTarget.value
+			email: event.currentTarget.value,
+			checkEmailValid: checkLengthAndValidEmail
 		});
-		
-		document.querySelector('#input-email').validity.valid ? this.setState({checkEmailValid: 'is-valid'}) : this.setState({checkEmailValid: 'is-error'});
-		!event.currentTarget.value.length ? this.setState({checkEmailValid: ' '}) : '';
 	}
 
 	submit(event){
@@ -26,7 +28,7 @@ class SubscribeForm extends React.Component {
 			<div className="subscribe__form">
 				<form 
 					className={`form form--subscribe ${this.state.checkEmailValid}`}
-					onSubmit={this.submit.bind(this)}
+					onSubmit={this.submit}
 				>
 					<h4 className="form-title">Подписаться:</h4>
 					<div className="form-group">
@@ -37,7 +39,8 @@ class SubscribeForm extends React.Component {
 							placeholder="Email" 
 							className="form-control"
 							value={this.state.email}
-							onChange={this.checkEmail.bind(this)} 
+							onChange={this.checkEmail} 
+							name="email"
 						/>
 						<div className="form-error">Пожалуйста, проверьте корректность адреса электронной почты</div>
 						<button type="submit" className="form-next">
