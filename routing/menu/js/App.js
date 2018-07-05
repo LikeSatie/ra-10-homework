@@ -3,7 +3,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Menu/>
+          <Menu activeClassName="menu__item-active"/>
           <div className="page">
             <Route path="/" exact component={HomePage} />
             <Route path="/drift" component={DriftPage} />
